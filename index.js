@@ -1,23 +1,25 @@
-let nome = "Fábio Quispe";
-let xp = 19244;
-let nivel = "";
+function calcularNivel(vitorias, derrotas) {
+    const saldoVitorias = vitorias - derrotas;
 
-const niveis = [
-  { nome: "Ferro", limite: 1000 },
-  { nome: "Bronze", limite: 2000 },
-  { nome: "Prata", limite: 5000 },
-  { nome: "Ouro", limite: 7000 },
-  { nome: "Platina", limite: 8000 },
-  { nome: "Ascendente", limite: 9000 },
-  { nome: "Imortal", limite: 10000 },
-  { nome: "Radiante", limite: Infinity }
-];
+    let nivel = "";
+    if (vitorias < 10) {
+        nivel = "Ferro";
+    } else if (vitorias >= 11 && vitorias <= 20) {
+        nivel = "Bronze";
+    } else if (vitorias >= 21 && vitorias <= 50) {
+        nivel = "Prata";
+    } else if (vitorias >= 51 && vitorias <= 80) {
+        nivel = "Ouro";
+    } else if (vitorias >= 81 && vitorias <= 90) {
+        nivel = "Diamante";
+    } else if (vitorias >= 91 && vitorias <= 100) {
+        nivel = "Lendário";
+    } else if (vitorias >= 101) {
+        nivel = "Imortal";
+    }
 
-for (const { nome: nivelNome, limite: nivelLimite } of niveis) {
-  if (xp <= nivelLimite) {
-    nivel = nivelNome;
-    break;
-  }
+    return `O Herói tem um saldo de ${saldoVitorias} e está no nível de ${nivel}`;
 }
 
-console.log(`O Herói de nome **{${nome}}** está no nível de **{${nivel}}**`);
+const resultado = calcularNivel(120, 4);
+console.log(resultado);
